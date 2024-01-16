@@ -9,8 +9,8 @@ public partial class OrderForm : Form
     private readonly string sushiName;
     private readonly PictureBox pictureBox;
     private readonly string productName;
-    private readonly decimal cost;
-    public OrderForm(string name, PictureBox picture, string productName, decimal cost)
+    private readonly int cost;
+    public OrderForm(string name, PictureBox picture, string productName, int cost)
     {
         this.cost = cost;
         this.productName = productName;
@@ -37,20 +37,17 @@ public partial class OrderForm : Form
             MessageBox.Show("Введите номер телефона, чтобы продолжить", "Ошибка");
             return;
         }
-        var selectorConsumer = context.Users.Where(x => x.Number == number).FirstOrDefault();
-        bool isNull = selectorConsumer == null;
+        var selectedConsumer = context.Users.Where(x => x.Number == number).FirstOrDefault();
+        bool isNull = selectedConsumer == null;
         if (isNull && name.Length == 0)
         {
             MessageBox.Show("Ваш телефон не найден, пожалуйста, введите имя, чтобы продолжить", "Ошибка");
             return;
         }
-        Order order;
-        if (!isNull)
-        {
-            selectorConsumer!.CountOrders++;
-            order = new Order(selectorConsumer, productName, cost);
-        }
-        else order = new Order(new Consumer(number, name), productName, cost);
+        if (isNull)
+            selectedConsumer = new User(number, name);
+        selectedConsumer!.CountOrders++;
+        Order order = new(selectedConsumer.Id, productName, cost) { User = selectedConsumer };
         context.Orders.Add(order);
         context.SaveChanges();
         MessageBox.Show("Спасибо за заказ! Ожидайте звонка!");

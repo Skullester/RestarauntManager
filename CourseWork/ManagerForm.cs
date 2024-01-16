@@ -3,19 +3,32 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using ManagerApp;
 
 namespace CourseWork;
 public partial class ManagerForm : Form
 {
     private ApplicationContext context = new();
     private List<Order> orderList = null!;
-    private List<Sushi> sushiList = null!;
-    private List<Consumer> consumerList = null!;
+    private List<Ingredient> sushiList = null!;
+    private List<User> consumerList = null!;
+    private IReport report = null!;
+    private bool isSorted;
     public ManagerForm()
     {
         InitializeComponent();
+        Initialize();
         InitializeDate();
         InitializeEntities();
+    }
+    private void Initialize()
+    {
+        comboBoxReport.Items.AddRange([new ProfitReport(), new ProfitReport()]);
+        comboBoxReport.SelectedValueChanged += OnReportChanged;
+    }
+    private void OnReportChanged(object? obj, EventArgs e)
+    {
+        report = (comboBoxReport.SelectedItem as IReport)!;
     }
     protected override void OnFormClosing(FormClosingEventArgs eventArgs)
     {
@@ -30,9 +43,8 @@ public partial class ManagerForm : Form
     }
     private void InitializeEntities()
     {
-
         orderList = context.Orders
-            .Include(x => x.Consumer)
+            .Include(x => x.User)
             .ToList();
         sushiList = context.Products.ToList();
         consumerList = context.Users.ToList();
@@ -100,5 +112,19 @@ public partial class ManagerForm : Form
         context.SaveChanges();
         orderList = context.Orders.ToList();
         orderTable.DataSource = orderList;
+    }
+
+    private void Sort(object sender, EventArgs e)
+    {
+        isSorted = !isSorted;
+        if (isSorted)
+            orderTable.DataSource = context.Orders.OrderBy(x => x.Cost).ToList();
+        else orderTable.DataSource = context.Orders.OrderByDescending(x => x.Cost).ToList();
+    }
+
+    private void MakeReport(object sender, EventArgs e)
+    {
+        report.Report();
+        new ReportForm().ShowDialog();
     }
 }

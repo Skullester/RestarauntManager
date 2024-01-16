@@ -5,8 +5,8 @@ public class Sushi
     private readonly PictureBox pictureBox;
     private readonly string imageUrl;
     private readonly string name;
-    private readonly decimal cost;
-    public Sushi(PictureBox picture, string pictureURL, string name, decimal cost)
+    private readonly int cost;
+    public Sushi(PictureBox picture, string pictureURL, string name, int cost)
     {
         this.name = name;
         pictureBox = picture;

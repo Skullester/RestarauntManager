@@ -45,6 +45,9 @@ namespace CourseWork
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            button4 = new Button();
+            button5 = new Button();
+            comboBoxReport = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)orderTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)storageTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)consumersTable).BeginInit();
@@ -185,11 +188,47 @@ namespace CourseWork
             label4.TabIndex = 12;
             label4.Text = "Заказы";
             // 
+            // button4
+            // 
+            button4.Font = new Font("Segoe UI", 12F);
+            button4.Location = new Point(13, 105);
+            button4.Name = "button4";
+            button4.Size = new Size(151, 30);
+            button4.TabIndex = 13;
+            button4.Text = "Отсортировать";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += Sort;
+            // 
+            // button5
+            // 
+            button5.Font = new Font("Segoe UI", 15F);
+            button5.Location = new Point(781, 9);
+            button5.Name = "button5";
+            button5.Size = new Size(179, 44);
+            button5.TabIndex = 14;
+            button5.Text = "Составить отчет";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += MakeReport;
+            // 
+            // comboBoxReport
+            // 
+            comboBoxReport.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxReport.Font = new Font("Segoe UI", 12F);
+            comboBoxReport.FormattingEnabled = true;
+            comboBoxReport.Items.AddRange(new object[] { "Прибыль", "Частопокупаемые товары" });
+            comboBoxReport.Location = new Point(966, 20);
+            comboBoxReport.Name = "comboBoxReport";
+            comboBoxReport.Size = new Size(121, 29);
+            comboBoxReport.TabIndex = 15;
+            // 
             // ManagerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1776, 730);
+            Controls.Add(comboBoxReport);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -231,5 +270,8 @@ namespace CourseWork
         private Label label2;
         private Label label3;
         private Label label4;
+        private Button button4;
+        private Button button5;
+        private ComboBox comboBoxReport;
     }
 }

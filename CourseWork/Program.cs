@@ -13,17 +13,5 @@ internal static class Program
     {
         ApplicationConfiguration.Initialize();
         Application.Run(new ManagerForm());
-        //  CreateStorage();
-    }
-
-    private static void CreateStorage()
-    {
-        ApplicationContext app = new();
-        app.Products.Add(new Sushi("Лосось", 50));
-        app.Products.Add(new Sushi("Тунец", 60));
-        app.Products.Add(new Sushi("Угорь", 80));
-        app.Products.Add(new Sushi("Креветки", 30));
-        app.Products.Add(new Sushi("Сливочный сыр", 20));
-        app.SaveChanges();
     }
 }

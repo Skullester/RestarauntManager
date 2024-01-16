@@ -6,7 +6,7 @@ class Category
     private List<Sushi> sushis;
     private const int COUNT_OF_PRODUCTS = 4;
     private readonly List<PictureBox> pictureBoxes = new();
-    public Category(string[] urls, string[] names, decimal cost)
+    public Category(string[] urls, string[] names, int cost)
     {
         sushis = new List<Sushi>();
         for (int i = 0; i < COUNT_OF_PRODUCTS; i++)

@@ -1,22 +1,27 @@
-﻿namespace CourseWork.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CourseWork.Entities;
 
 public class Order
 {
     //[Key]
+    //[NotMapped]
+    [Key]
     public int Id { get; set; }
     public DateTime Date { get; set; }
-    public virtual Consumer Consumer { get; set; } = null!;
-    public string ConsumerNumber => Consumer.Number;
-    public int ConsumerId { get; set; }
+    public User User { get; set; } = null!;
+    public string UserNumber => User.Number;
+    public int UserId { get; set; }
     public string ProductName { get; set; } = null!;
-    public decimal Cost { get; set; }
+    public int Cost { get; set; }
 
-    public Order(Consumer consumer, string nameProduct, decimal cost)
+    public Order(int userId, string nameProduct, int cost)
     {
+        UserId = userId;
         Cost = cost;
         ProductName = nameProduct;
-        Consumer = consumer;
-        Date = DateTime.Now;
+        //Date = DateTime.Now;
     }
     public Order()
     {
