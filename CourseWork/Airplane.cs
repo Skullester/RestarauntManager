@@ -8,5 +8,5 @@ public class Airplane
     public int id { get; set; }
     public Airport airport { get; set; }
     public string name { get; set; }
-    public Destination destination { get; set; }
+    public List<Destination> destination { get; set; }
 }
