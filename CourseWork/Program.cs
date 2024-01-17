@@ -1,7 +1,4 @@
-using System.Runtime.InteropServices.Marshalling;
-using CourseWork.Entities;
-using Microsoft.EntityFrameworkCore;
-namespace CourseWork;
+namespace Airport;
 
 internal static class Program
 {
@@ -12,6 +9,6 @@ internal static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new ManagerForm());
+        Application.Run(new MainForm());
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagerApp", "ManagerApp.csproj", "{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airport", "Airport.csproj", "{D5972F9E-4953-4DCE-89E1-1E1FB68A2307}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserApp", "..\UserApp\UserApp.csproj", "{40BDA03A-DB86-4E25-ABF3-EEC96D432A8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserApp", "..\UserApp\UserApp.csproj", "{40BDA03A-DB86-4E25-ABF3-EEC96D432A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
