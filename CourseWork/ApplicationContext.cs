@@ -10,12 +10,39 @@ public class ApplicationContext : DbContext
         // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
+    public static List<Product> Products { get; }
+    static ApplicationContext()
+    {
+        Products = new List<Product>
+        {
+            new(1,"Запеченная Калифорния",300) {Id = 1},
+            new(1,"Запеченный унаги",300) {Id =2},
+            new(1,"Чикен биг хот",300) {Id =3},
+            new(1,"Хайнань",300){ Id = 4},
+
+            new(2,"Ролл с морским окунем",200) {Id = 5},
+            new(2,"Ролл с креветкой спайси",200) {Id =6},
+            new(2,"Ролл с курицей и огурцом",200) {Id = 7},
+            new(2,"Ролл с авокадо",200){Id = 8},
+
+            new(3,"Аруба Люкс",400) { Id = 9},
+            new(3,"Пафос Люкс",400) {Id=10},
+            new(3,"Манхэттен Люкс",400){Id =11},
+            new(3,"Калифорния Люкс",400){Id=12},
+
+            new(4,"Гункан с тунцом и филадельфией",500){Id =13},
+            new(4,"Гункан с тунцом спайси",500){Id=14},
+            new(4,"Гункан с морским окунем и филадельфией",500){Id=15},
+            new(4,"Суши с лососем",500){Id=16},
+        };
+    }
     public DbSet<Order> Orders { get; set; }
-    public DbSet<Ingredient> Products { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Menu { get; set; }
-    public DbSet<Review> Reviews { get; set; }
-    public DbSet<Delivery> Deliveries { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    // public DbSet<Review> Reviews { get; set; }
+    // public DbSet<Delivery> Deliveries { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(@"Data Source=..\..\..\..\CourseWork\bin\Debug\net8.0-windows\helloapp2.db");
@@ -37,28 +64,14 @@ public class ApplicationContext : DbContext
         modelBuilder.Entity<Ingredient>().HasData(new Ingredient("Лосось", 20) { Id = 2 });
         modelBuilder.Entity<User>().ToTable(t => t.HasCheckConstraint("ValidNumber", "LENGTH(Number) == 11"));
         modelBuilder.Entity<Order>().Property(x => x.Date).HasDefaultValueSql("datetime('now','localtime')");
-        var products = new Product[]
+        var categories = new List<Category>
         {
-            new("Запеченная Калифорния",300) {Id = 1},
-            new("Запеченный унаги",300) {Id =2 },
-            new("Чикен биг хот",300) {Id =3 },
-            new("Хайнань",300){ Id = 4},
-
-            new("Ролл с морским окунем",200) {Id = 5},
-            new("Ролл с креветкой спайси",200) {Id =6},
-            new("Ролл с курицей и огурцом",200) {Id = 7},
-            new("Ролл с авокадо",200){Id = 8},
-
-            new("Аруба Люкс",400) { Id = 9},
-            new("Пафос Люкс",400) {Id=10},
-            new("Манхэттен Люкс",400){Id =11},
-            new("Калифорния Люкс",400){Id=12},
-
-            new("Гункан с тунцом и филадельфией",500){Id =13},
-            new("Гункан с тунцом спайси",500){Id=14},
-            new("Гункан с морским окунем и филадельфией",500){Id=15},
-            new("Суши с лососем",500){Id=16},
+        new Category("Hot") { Id = 1 },
+        new Category("Classic") { Id = 2 },
+        new Category("Lux") { Id = 3 },
+        new Category("Sushi") { Id = 4 },
         };
-        modelBuilder.Entity<Product>().HasData(products);
+        modelBuilder.Entity<Category>().HasData(categories);
+        modelBuilder.Entity<Product>().HasData(Products);
     }
 }

@@ -48,9 +48,18 @@ public partial class OrderForm : Form
             selectedConsumer = new User(number, name);
         selectedConsumer!.CountOrders++;
         Order order = new(selectedConsumer.Id, productName, cost) { User = selectedConsumer };
-        context.Orders.Add(order);
-        context.SaveChanges();
+
         MessageBox.Show("Спасибо за заказ! Ожидайте звонка!");
+        Product product = null!;
+        foreach (var item in ApplicationContext.Products)
+            if (item.Name == productName)
+            {
+                product = item;
+                item.OrderCount++;
+            }
+        context.Orders.Add(order);
+        context.Menu.Update(product);
+        context.SaveChanges();
         this.Hide();
     }
 }

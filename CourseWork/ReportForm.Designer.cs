@@ -29,31 +29,45 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(24, 12);
+            dataGridView1.Location = new Point(32, 121);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(860, 516);
+            dataGridView1.Size = new Size(856, 432);
             dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 25F);
+            label1.Location = new Point(225, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(446, 46);
+            label1.TabIndex = 1;
+            label1.Text = "Частопродаваемые товары";
             // 
             // ReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(916, 581);
+            Controls.Add(label1);
             Controls.Add(dataGridView1);
             Name = "ReportForm";
             Text = "Отчет";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
+        private Label label1;
     }
 }

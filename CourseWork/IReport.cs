@@ -1,4 +1,5 @@
 ﻿using CourseWork.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseWork;
 
@@ -34,7 +35,7 @@ class BestProductReport : IReport
 
     public List<Product> Report()
     {
-        return context.Menu.Take(5).ToList();
+        return context.Menu.Include(x => x.Category).OrderByDescending(x => x.OrderCount).Take(5).ToList();
     }
 
     public override string ToString()

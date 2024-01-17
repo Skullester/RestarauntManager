@@ -43,11 +43,10 @@ public partial class ManagerForm : Form
     }
     private void InitializeEntities()
     {
-        //   orderList = context.Orders.Join(context.Products, x => x.UserNumber, c => c.Name, (u, c) => new { Name = u.ProductName, Company = c.Count }).ToList();
+        //   orderList = context.Orders.Join(context.Ingredients, x => x.UserNumber, c => c.Name, (u, c) => new { Name = u.ProductName, Company = c.Count }).ToList();
         orderList = context.Orders
-            //.Include(x => x.User)
             .ToList();
-        sushiList = context.Products.ToList();
+        sushiList = context.Ingredients.ToList();
         consumerList = context.Users.ToList();
         foreach (var item in Controls)
         {
@@ -95,7 +94,7 @@ public partial class ManagerForm : Form
             else sb.Append(char.ToUpper(sym));
         }
         selector = sb.ToString();
-        var selectedList = context.Products
+        var selectedList = context.Ingredients
             .Where(x => x.Name
                 .StartsWith(selector))
             .ToList();

@@ -1,5 +1,6 @@
 ﻿using UserApp;
 using CourseWork;
+using Microsoft.EntityFrameworkCore;
 
 namespace ManagerApp;
 
@@ -13,7 +14,8 @@ public partial class MenuForm : Form
 
     private void Initialize()
     {
-        var list = UserForm.ApplicationContext.Menu.ToList();
+        UserForm.ApplicationContext = new();
+        var list = UserForm.ApplicationContext.Menu.Include(x => x.Category).ToList();
         dataGridView1.DataSource = list;
     }
 }
