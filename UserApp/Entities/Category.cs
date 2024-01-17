@@ -6,8 +6,10 @@ class Category
     private List<Sushi> sushis;
     private const int COUNT_OF_PRODUCTS = 4;
     private readonly List<PictureBox> pictureBoxes = new();
-    public Category(string[] urls, string[] names, int cost)
+    private readonly UserForm form;
+    public Category(UserForm form, string[] urls, string[] names, int cost)
     {
+        this.form = form;
         sushis = new List<Sushi>();
         for (int i = 0; i < COUNT_OF_PRODUCTS; i++)
         {
@@ -18,10 +20,10 @@ class Category
     }
     private void AddControls()
     {
-        UserForm.TableLayoutPanel1.Controls.Clear();
+        form.TableLayoutPanel1.Controls.Clear();
         foreach (var item in pictureBoxes)
         {
-            UserForm.TableLayoutPanel1.Controls.Add(item);
+            form.TableLayoutPanel1.Controls.Add(item);
         }
     }
     public void Show()

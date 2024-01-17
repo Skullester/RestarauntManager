@@ -1,4 +1,6 @@
 ﻿using UserApp;
+using CourseWork;
+
 namespace ManagerApp;
 
 public partial class MenuForm : Form

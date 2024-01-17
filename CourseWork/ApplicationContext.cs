@@ -7,7 +7,7 @@ public class ApplicationContext : DbContext
 {
     public ApplicationContext()
     {
-        Database.EnsureDeleted();
+        // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     public DbSet<Order> Orders { get; set; }

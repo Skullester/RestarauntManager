@@ -5,7 +5,7 @@ namespace UserApp;
 
 public partial class OrderForm : Form
 {
-    private static readonly ApplicationContext context = new();
+    private static readonly CourseWork.ApplicationContext context = new();
     private readonly string sushiName;
     private readonly PictureBox pictureBox;
     private readonly string productName;

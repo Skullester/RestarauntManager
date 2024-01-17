@@ -41,6 +41,7 @@ namespace UserApp
             label3 = new Label();
             label4 = new Label();
             button1 = new Button();
+            TableLayoutPanel1 = new TableLayoutPanel();
             SuspendLayout();
             // 
             // timeLabel
@@ -147,6 +148,19 @@ namespace UserApp
             button1.UseVisualStyleBackColor = true;
             button1.Click += OpenMenu;
             // 
+            // TableLayoutPanel1
+            // 
+            TableLayoutPanel1.ColumnCount = 2;
+            TableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TableLayoutPanel1.Location = new Point(289, 40);
+            TableLayoutPanel1.Name = "TableLayoutPanel1";
+            TableLayoutPanel1.RowCount = 2;
+            TableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanel1.Size = new Size(853, 642);
+            TableLayoutPanel1.TabIndex = 11;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,6 +175,7 @@ namespace UserApp
             Controls.Add(categoryLabel);
             Controls.Add(dateLabel);
             Controls.Add(timeLabel);
+            Controls.Add(TableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "UserForm";
@@ -182,7 +197,6 @@ namespace UserApp
         private Label label3;
         private Label label4;
         private Button button1;
-
-        public static TableLayoutPanel TableLayoutPanel1 { get; } = new TableLayoutPanel();
+        public TableLayoutPanel TableLayoutPanel1;
     }
 }

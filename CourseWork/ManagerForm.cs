@@ -43,8 +43,9 @@ public partial class ManagerForm : Form
     }
     private void InitializeEntities()
     {
+        //   orderList = context.Orders.Join(context.Products, x => x.UserNumber, c => c.Name, (u, c) => new { Name = u.ProductName, Company = c.Count }).ToList();
         orderList = context.Orders
-            .Include(x => x.User)
+            //.Include(x => x.User)
             .ToList();
         sushiList = context.Products.ToList();
         consumerList = context.Users.ToList();

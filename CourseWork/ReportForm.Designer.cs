@@ -35,7 +35,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(26, 22);
+            dataGridView1.Location = new Point(24, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(860, 516);
             dataGridView1.TabIndex = 0;
@@ -47,7 +47,7 @@
             ClientSize = new Size(916, 581);
             Controls.Add(dataGridView1);
             Name = "ReportForm";
-            Text = "Form1";
+            Text = "Отчет";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
