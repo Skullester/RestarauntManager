@@ -215,10 +215,9 @@ namespace CourseWork
             comboBoxReport.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxReport.Font = new Font("Segoe UI", 12F);
             comboBoxReport.FormattingEnabled = true;
-            comboBoxReport.Items.AddRange(new object[] { "Прибыль", "Частопокупаемые товары" });
             comboBoxReport.Location = new Point(966, 20);
             comboBoxReport.Name = "comboBoxReport";
-            comboBoxReport.Size = new Size(121, 29);
+            comboBoxReport.Size = new Size(163, 29);
             comboBoxReport.TabIndex = 15;
             // 
             // ManagerForm

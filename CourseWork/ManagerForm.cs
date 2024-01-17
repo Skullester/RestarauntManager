@@ -23,7 +23,7 @@ public partial class ManagerForm : Form
     }
     private void Initialize()
     {
-        comboBoxReport.Items.AddRange([new ProfitReport(), new ProfitReport()]);
+        comboBoxReport.Items.AddRange([new ProfitReport(context), new BestProductReport(context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
     }
     private void OnReportChanged(object? obj, EventArgs e)
@@ -124,7 +124,7 @@ public partial class ManagerForm : Form
 
     private void MakeReport(object sender, EventArgs e)
     {
-        report.Report();
-        new ReportForm().ShowDialog();
+        var list = report.Report();
+        new ReportForm(list).ShowDialog();
     }
 }

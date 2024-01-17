@@ -40,7 +40,7 @@ namespace UserApp
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-           // TableLayoutPanel1 = new TableLayoutPanel();
+            button1 = new Button();
             SuspendLayout();
             // 
             // timeLabel
@@ -136,25 +136,23 @@ namespace UserApp
             label4.TabIndex = 10;
             label4.Text = "Добро пожаловать!";
             // 
-            // TableLayoutPanel1
+            // button1
             // 
-            TableLayoutPanel1.ColumnCount = 2;
-            TableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            TableLayoutPanel1.Location = new Point(289, 40);
-            TableLayoutPanel1.Name = "TableLayoutPanel1";
-            TableLayoutPanel1.RowCount = 2;
-            TableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel1.Size = new Size(853, 642);
-            TableLayoutPanel1.TabIndex = 11;
+            button1.Font = new Font("Segoe UI", 20F);
+            button1.Location = new Point(7, 527);
+            button1.Name = "button1";
+            button1.Size = new Size(168, 50);
+            button1.TabIndex = 11;
+            button1.Text = "Меню";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += OpenMenu;
             // 
             // UserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1195, 694);
-            Controls.Add(TableLayoutPanel1);
+            Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -183,6 +181,8 @@ namespace UserApp
         private Label label2;
         private Label label3;
         private Label label4;
+        private Button button1;
+
         public static TableLayoutPanel TableLayoutPanel1 { get; } = new TableLayoutPanel();
     }
 }

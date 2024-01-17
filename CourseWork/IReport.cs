@@ -1,15 +1,24 @@
-﻿namespace CourseWork;
+﻿using CourseWork.Entities;
+
+namespace CourseWork;
 
 interface IReport
 {
-    void Report();
+    List<Product> Report();
 }
 class ProfitReport : IReport
 {
-    public void Report()
+    private ApplicationContext context;
+    public ProfitReport(ApplicationContext context)
     {
-
+        this.context = context;
     }
+
+    public List<Product> Report()
+    {
+        return null;
+    }
+
     public override string ToString()
     {
         return "Прибыль";
@@ -17,13 +26,19 @@ class ProfitReport : IReport
 }
 class BestProductReport : IReport
 {
-    public void Report()
+    private ApplicationContext context;
+    public BestProductReport(ApplicationContext context)
     {
-        throw new NotImplementedException();
+        this.context = context;
     }
+
+    public List<Product> Report()
+    {
+        return context.Menu.Take(5).ToList();
+    }
+
     public override string ToString()
     {
         return "Лучший товар";
     }
 }
-//class 
