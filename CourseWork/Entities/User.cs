@@ -11,7 +11,7 @@ public class User
     private string number = null!;
     public string Number
     {
-        get => "+" + number;
+        get => number;
         set
         {
             var isNotValid = value

@@ -1,4 +1,4 @@
-using CourseWork.Entities;
+﻿using CourseWork.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Text;
@@ -14,6 +14,8 @@ public partial class ManagerForm : Form
     private List<User> consumerList = null!;
     private IReport report = null!;
     private bool isSorted;
+    List<Order> ordered;
+    List<Ingredient> ingrediented;
     public ManagerForm()
     {
         InitializeComponent();
@@ -23,8 +25,11 @@ public partial class ManagerForm : Form
     }
     private void Initialize()
     {
-        comboBoxReport.Items.AddRange([new ProfitReport(context), new BestProductReport(context)]);
+
+        comboBoxReport.Items.AddRange([new ProfitReport(context), new BestProductReport(context), new ClientReport(context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
+        foreach (var item in Controls)
+            if (item is ComboBox cb) cb.SelectedIndex = 0;
     }
     private void OnReportChanged(object? obj, EventArgs e)
     {
@@ -32,7 +37,7 @@ public partial class ManagerForm : Form
     }
     protected override void OnFormClosing(FormClosingEventArgs eventArgs)
     {
-        var result = MessageBox.Show("������������� �������?", "Close?",
+        var result = MessageBox.Show("Действительно закрыть?", "Close?",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (result != DialogResult.Yes)
             eventArgs.Cancel = true;
@@ -43,7 +48,6 @@ public partial class ManagerForm : Form
     }
     private void InitializeEntities()
     {
-        //   orderList = context.Orders.Join(context.Ingredients, x => x.UserNumber, c => c.Name, (u, c) => new { Name = u.ProductName, Company = c.Count }).ToList();
         orderList = context.Orders
             .ToList();
         sushiList = context.Ingredients.ToList();
@@ -53,12 +57,44 @@ public partial class ManagerForm : Form
             if (item is DataGridView dbv)
                 dbv.ReadOnly = true;
         }
+        ordered = orderList;
+        ingrediented = sushiList;
+
     }
     private void InitializeTable()
     {
-        orderTable.DataSource = orderList;
-        storageTable.DataSource = sushiList;
-        consumersTable.DataSource = consumerList;
+        var query = from order in context.Orders
+                    join user in context.Users on order.UserId equals user.Id
+                    select new
+                    {
+                        Дата = order.Date,
+                        Клиент = user.Name,
+                        Товар = order.ProductName,
+                        Цена = order.Cost + "₽",
+                        Ресторан = order.Restaraunt,
+                        Телефон = "+" + user.Number
+                    };
+        var result = query.ToList();
+        orderTable.DataSource = result;
+        var query2 = from ingrdient in context.Ingredients
+                     join ingrdeient in context.Ingredients on ingrdient.Id equals ingrdeient.Id
+                     select new
+                     {
+                         Ингредиент = ingrdeient.Name,
+                         Количество = ingrdeient.Count
+                     };
+        var result2 = query2.ToList();
+        storageTable.DataSource = result2;
+        var query3 = from user in context.Users
+                     join user2 in context.Users on user.Id equals user2.Id
+                     select new
+                     {
+                         Клиент = user.Name,
+                         Количество_Заказов = user2.CountOrders,
+                         Телефон = "+" + user.Number
+                     };
+        var result3 = query3.ToList();
+        consumersTable.DataSource = result3;
     }
     private void OpenTable(object sender, EventArgs e)
     {
@@ -77,12 +113,20 @@ public partial class ManagerForm : Form
         InitializeTable();
 
     }
+
     private void Find(object sender, EventArgs e)
     {
         var selector = (sender as TextBox)!.Text;
         if (selector == string.Empty)
         {
-            storageTable.DataSource = sushiList;
+            var query3 = from ingrdient in ingrediented
+                         join ingrdeient in context.Ingredients on ingrdient.Id equals ingrdeient.Id
+                         select new
+                         {
+                             Ингредиент = ingrdeient.Name,
+                             Количество = ingrdeient.Count
+                         };
+            storageTable.DataSource = query3.ToList();
             return;
         }
         StringBuilder sb = new();
@@ -98,33 +142,72 @@ public partial class ManagerForm : Form
             .Where(x => x.Name
                 .StartsWith(selector))
             .ToList();
-        storageTable.DataSource = selectedList;
+        var query2 = from ingrdient in selectedList
+                     join ingrdeient in context.Ingredients on ingrdient.Id equals ingrdeient.Id
+                     select new
+                     {
+                         Ингредиент = ingrdeient.Name,
+                         Количество = ingrdeient.Count
+                     };
+        var result2 = query2.ToList();
+        storageTable.DataSource = result2;
     }
 
     private void Process(object sender, EventArgs e)
     {
         if (context.Orders.Local.Count == 0)
         {
-            MessageBox.Show("��� ������ ��� ����������");
+            MessageBox.Show("Все заказы уже обработаны");
             return;
         }
-        context.Orders.Remove(orderList[0]);
+        context.Orders.Remove(ordered[0]);
+        ordered.Remove(ordered[0]);
         context.SaveChanges();
-        orderList = context.Orders.ToList();
-        orderTable.DataSource = orderList;
+        var query = from order in ordered
+                    join user in context.Users on order.UserId equals user.Id
+                    select new
+                    {
+                        Дата = order.Date,
+                        Клиент = user.Name,
+                        Товар = order.ProductName,
+                        Цена = order.Cost + "P",
+                        Ресторан = order.Restaraunt,
+                        Телефон = "+" + user.Number
+                    };
+        var result = query.ToList();
+        orderTable.DataSource = result;
     }
 
     private void Sort(object sender, EventArgs e)
     {
         isSorted = !isSorted;
         if (isSorted)
-            orderTable.DataSource = context.Orders.OrderBy(x => x.Cost).ToList();
-        else orderTable.DataSource = context.Orders.OrderByDescending(x => x.Cost).ToList();
+            ordered = context.Orders.OrderBy(x => x.Cost).ToList();
+        else
+            ordered = context.Orders.OrderByDescending(x => x.Cost).ToList();
+        SendQuery(ordered);
+    }
+    private void SendQuery(List<Order> orders)
+    {
+        var query = from order in orders
+                    join user in context.Users on order.UserId equals user.Id
+                    select new
+                    {
+                        Дата = order.Date,
+                        Клиент = user.Name,
+                        Товар = order.ProductName,
+                        Цена = order.Cost + "₽",
+                        Ресторан = order.Restaraunt,
+                        Телефон = "+" + user.Number
+                    };
+        orderTable.DataSource = query.ToList();
     }
 
     private void MakeReport(object sender, EventArgs e)
     {
-        var list = report.Report();
-        new ReportForm(list).ShowDialog();
+        var reportForm = new ReportForm();
+
+        report.Report(reportForm);
+        reportForm.ShowDialog();
     }
 }

@@ -15,9 +15,12 @@ public class Order
     public int UserId { get; set; }
     public string ProductName { get; set; } = null!;
     public int Cost { get; set; }
+    public Restaraunt Restaraunt { get; set; }
+    public int RestarauntId { get; set; }
 
-    public Order(int userId, string nameProduct, int cost)
+    public Order(int restarauntId, int userId, string nameProduct, int cost)
     {
+        RestarauntId = restarauntId;
         UserId = userId;
         Cost = cost;
         ProductName = nameProduct;

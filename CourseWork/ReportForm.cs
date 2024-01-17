@@ -1,12 +1,12 @@
-﻿using CourseWork.Entities;
+﻿using CourseWork;
+using CourseWork.Entities;
 
 namespace ManagerApp;
 
 public partial class ReportForm : Form
 {
-    public ReportForm(List<Product> products)
+    public ReportForm()
     {
         InitializeComponent();
-        dataGridView1.DataSource = products;
     }
 }

@@ -21,6 +21,8 @@ public partial class OrderForm
         button1 = new Button();
         labelCost = new Label();
         sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+        comboBox1 = new ComboBox();
+        label4 = new Label();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         SuspendLayout();
         // 
@@ -122,9 +124,31 @@ public partial class OrderForm
         sqliteCommand1.Transaction = null;
         sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
         // 
+        // comboBox1
+        // 
+        comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+        comboBox1.Font = new Font("Segoe UI", 15F);
+        comboBox1.FormattingEnabled = true;
+        comboBox1.Location = new Point(821, 254);
+        comboBox1.Name = "comboBox1";
+        comboBox1.Size = new Size(194, 36);
+        comboBox1.TabIndex = 9;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Font = new Font("Segoe UI", 20F);
+        label4.Location = new Point(812, 214);
+        label4.Name = "label4";
+        label4.Size = new Size(137, 37);
+        label4.TabIndex = 10;
+        label4.Text = "Ресторан:";
+        // 
         // OrderForm
         // 
         ClientSize = new Size(1108, 556);
+        Controls.Add(label4);
+        Controls.Add(comboBox1);
         Controls.Add(labelCost);
         Controls.Add(button1);
         Controls.Add(pictureBox1);
@@ -152,4 +176,6 @@ public partial class OrderForm
     private Button button1;
     private Label labelCost;
     private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+    private ComboBox comboBox1;
+    private Label label4;
 }

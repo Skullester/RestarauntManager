@@ -1,4 +1,3 @@
-using CourseWork;
 using ManagerApp;
 using ApplicationContext = CourseWork.ApplicationContext;
 namespace UserApp;

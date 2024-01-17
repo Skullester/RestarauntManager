@@ -16,6 +16,16 @@ public partial class MenuForm : Form
     {
         UserForm.ApplicationContext = new();
         var list = UserForm.ApplicationContext.Menu.Include(x => x.Category).ToList();
-        dataGridView1.DataSource = list;
+        var context = UserForm.ApplicationContext;
+        var query = from product in context.Menu
+                    join category in context.Categories on product.CategoryId equals category.Id
+                    select new
+                    {
+                        Название = product.Name,
+                        Цена = product.Cost + "₽",
+                        Категория = category.Name
+                    };
+        var result = query.ToList();
+        dataGridView1.DataSource = result;
     }
 }

@@ -36,16 +36,16 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(32, 121);
+            dataGridView1.Location = new Point(151, 121);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(856, 432);
+            dataGridView1.Size = new Size(650, 426);
             dataGridView1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 25F);
-            label1.Location = new Point(225, 55);
+            label1.Location = new Point(250, 56);
             label1.Name = "label1";
             label1.Size = new Size(446, 46);
             label1.TabIndex = 1;
@@ -67,7 +67,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Label label1;
+        public DataGridView dataGridView1;
+        public Label label1;
     }
 }
