@@ -32,6 +32,10 @@
             pictureBox1 = new PictureBox();
             labelCurrentFlights = new Label();
             dataGridViewDestinations = new DataGridView();
+            button1 = new Button();
+            comboBoxReport = new ComboBox();
+            label1 = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).BeginInit();
             SuspendLayout();
@@ -49,24 +53,69 @@
             // labelCurrentFlights
             // 
             labelCurrentFlights.AutoSize = true;
-            labelCurrentFlights.Font = new Font("Segoe UI", 20F);
-            labelCurrentFlights.Location = new Point(838, 43);
+            labelCurrentFlights.Font = new Font("Segoe UI", 22F);
+            labelCurrentFlights.Location = new Point(701, 46);
             labelCurrentFlights.Name = "labelCurrentFlights";
-            labelCurrentFlights.Size = new Size(213, 37);
+            labelCurrentFlights.Size = new Size(239, 41);
             labelCurrentFlights.TabIndex = 1;
             labelCurrentFlights.Text = "Текущие рейсы:";
             // 
             // dataGridViewDestinations
             // 
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDestinations.Location = new Point(639, 104);
+            dataGridViewDestinations.Location = new Point(415, 104);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
-            dataGridViewDestinations.Size = new Size(588, 469);
+            dataGridViewDestinations.Size = new Size(814, 480);
             dataGridViewDestinations.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 20F);
+            button1.Location = new Point(12, 533);
+            button1.Name = "button1";
+            button1.Size = new Size(254, 51);
+            button1.TabIndex = 3;
+            button1.Text = "Добавить рейс";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += AddFlight;
+            // 
+            // comboBoxReport
+            // 
+            comboBoxReport.Font = new Font("Segoe UI", 15F);
+            comboBoxReport.FormattingEnabled = true;
+            comboBoxReport.Location = new Point(39, 320);
+            comboBoxReport.Name = "comboBoxReport";
+            comboBoxReport.Size = new Size(193, 36);
+            comboBoxReport.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 22F);
+            label1.Location = new Point(82, 276);
+            label1.Name = "label1";
+            label1.Size = new Size(105, 41);
+            label1.TabIndex = 5;
+            label1.Text = "Отчет:";
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 20F);
+            button2.Location = new Point(12, 362);
+            button2.Name = "button2";
+            button2.Size = new Size(254, 51);
+            button2.TabIndex = 6;
+            button2.Text = "Составить отчет";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += MakeReport;
             // 
             // MainForm
             // 
-            ClientSize = new Size(1260, 596);
+            ClientSize = new Size(1292, 645);
+            Controls.Add(button2);
+            Controls.Add(label1);
+            Controls.Add(comboBoxReport);
+            Controls.Add(button1);
             Controls.Add(dataGridViewDestinations);
             Controls.Add(labelCurrentFlights);
             Controls.Add(pictureBox1);
@@ -83,5 +132,9 @@
         private PictureBox pictureBox1;
         private Label labelCurrentFlights;
         private DataGridView dataGridViewDestinations;
+        private Button button1;
+        private ComboBox comboBoxReport;
+        private Label label1;
+        private Button button2;
     }
 }
