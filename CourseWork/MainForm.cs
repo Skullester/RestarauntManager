@@ -36,7 +36,7 @@ public partial class MainForm : Form
         Context = new();
         thread = new(CheckFlight) { Name = "Second" };
         thread.Start();
-        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context), new C(Context)]);
+        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context, this), new C(Context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
         var arr = Context.Airports.ToArray();
         comboBoxAirports.Items.AddRange(arr);

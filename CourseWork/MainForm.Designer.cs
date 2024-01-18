@@ -160,6 +160,6 @@
         private Label label1;
         private Button button2;
         private Label label2;
-        private ComboBox comboBoxAirports;
+        public ComboBox comboBoxAirports;
     }
 }

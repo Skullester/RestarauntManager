@@ -8,7 +8,7 @@ public class Context : DbContext
 {
     public Context()
     {
-        // Database.EnsureDeleted();
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     public DbSet<Airport> Airports { get; set; }
@@ -85,10 +85,10 @@ public class Context : DbContext
             new Airport("Шереметьево", "г.Москва", "1234567890") { id = 1 },
             new Airport("Внуково", "г.Москва", "1234567892") { id = 2 },
             new Airport("Домодедово", "г.Москва", "1224567891") { id = 3 },
-            new Airport("TokioAirport", "г.Токио", "1214567891") { id = 4 },
-            new Airport("KanberraAirport", "г.Канберра", "1334567891") { id = 5 },
-            new Airport("AnkaraAirport", "г.Анкара", "1434567891") { id = 6 },
-            new Airport("airport", "г.Вашингтон", "1534567891") { id = 7 }
+            new Airport("АэропортТокио", "г.Токио", "1214567891") { id = 4 },
+            new Airport("АэропортКанберра", "г.Канберра", "1334567891") { id = 5 },
+            new Airport("АэропортАнкара", "г.Анкара", "1434567891") { id = 6 },
+            new Airport("АэропортФранция", "г.Вашингтон", "1534567891") { id = 7 }
         };
         builder.HasData(airports);
     }
