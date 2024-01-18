@@ -42,8 +42,11 @@
             button1 = new Button();
             label7 = new Label();
             comboBoxDate = new ComboBox();
+            dataGridViewPositions = new DataGridView();
+            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirplanes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirports).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPositions).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewAirplanes
@@ -68,7 +71,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(793, 31);
+            label2.Location = new Point(591, 31);
             label2.Name = "label2";
             label2.Size = new Size(156, 37);
             label2.TabIndex = 2;
@@ -79,7 +82,7 @@
             dataGridViewAirports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAirports.Location = new Point(402, 84);
             dataGridViewAirports.Name = "dataGridViewAirports";
-            dataGridViewAirports.Size = new Size(1069, 341);
+            dataGridViewAirports.Size = new Size(522, 346);
             dataGridViewAirports.TabIndex = 3;
             // 
             // label3
@@ -182,11 +185,31 @@
             comboBoxDate.Size = new Size(224, 36);
             comboBoxDate.TabIndex = 13;
             // 
+            // dataGridViewPositions
+            // 
+            dataGridViewPositions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPositions.Location = new Point(949, 84);
+            dataGridViewPositions.Name = "dataGridViewPositions";
+            dataGridViewPositions.Size = new Size(522, 346);
+            dataGridViewPositions.TabIndex = 14;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 20F);
+            label8.Location = new Point(1111, 31);
+            label8.Name = "label8";
+            label8.Size = new Size(157, 37);
+            label8.TabIndex = 15;
+            label8.Text = "Должности";
+            // 
             // AddingFlightForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1483, 743);
+            Controls.Add(label8);
+            Controls.Add(dataGridViewPositions);
             Controls.Add(comboBoxDate);
             Controls.Add(label7);
             Controls.Add(button1);
@@ -205,6 +228,7 @@
             Text = "AddingFlightForm";
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirplanes).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirports).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPositions).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -225,5 +249,7 @@
         private Button button1;
         private Label label7;
         private ComboBox comboBoxDate;
+        private DataGridView dataGridViewPositions;
+        private Label label8;
     }
 }

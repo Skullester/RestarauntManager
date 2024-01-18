@@ -36,13 +36,24 @@ public partial class MainForm : Form
         Context = new();
         thread = new(CheckFlight) { Name = "Second" };
         thread.Start();
-        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context)/*, new BestProductReport(context), new ClientReport(context)*/]);
+        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context), new C(Context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
+        var arr = Context.Airports.ToArray();
+        comboBoxAirports.Items.AddRange(arr);
+        foreach (var item in Controls)
+        {
+            if (item is ComboBox cb)
+                cb.SelectedIndex = 0;
+        }
     }
 
     private void OnReportChanged(object? obj, EventArgs e)
     {
         report = (comboBoxReport.SelectedItem as IReport)!;
+        bool isDestination = report is DestinationReport;
+        label2.Visible = isDestination;
+        comboBoxAirports.Visible = isDestination;
+
     }
 
     private void CheckFlight()
@@ -77,6 +88,8 @@ public partial class MainForm : Form
 
     private void MakeReport(object sender, EventArgs e)
     {
-
+        var reportForm = new ReportForm();
+        report.Report(reportForm);
+        reportForm.ShowDialog();
     }
 }

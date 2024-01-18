@@ -57,6 +57,12 @@ public partial class AddingFlightForm : Form
         });
         var result2 = query2.ToList();
         dataGridViewAirports.DataSource = result2;
+        var query3 = context.Positions.Select(pos => new
+        {
+            Должность = pos.name
+        });
+        var result3 = query3.ToList();
+        dataGridViewPositions.DataSource = result3;
     }
 
     private void Add(object sender, EventArgs e)
@@ -70,6 +76,7 @@ public partial class AddingFlightForm : Form
         var newDest = new Destination(airplane.id, outFlight.id, inFlight.id, 10, date);
         context.Destinations.Add(newDest);
         context.SaveChanges();
+        MessageBox.Show("Успешно!");
         mainForm.InitializeTables();
         Hide();
     }

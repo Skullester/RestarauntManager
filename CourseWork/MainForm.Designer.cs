@@ -36,6 +36,8 @@
             comboBoxReport = new ComboBox();
             label1 = new Label();
             button2 = new Button();
+            label2 = new Label();
+            comboBoxAirports = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDestinations).BeginInit();
             SuspendLayout();
@@ -83,16 +85,16 @@
             // 
             comboBoxReport.Font = new Font("Segoe UI", 15F);
             comboBoxReport.FormattingEnabled = true;
-            comboBoxReport.Location = new Point(39, 320);
+            comboBoxReport.Location = new Point(12, 249);
             comboBoxReport.Name = "comboBoxReport";
-            comboBoxReport.Size = new Size(193, 36);
+            comboBoxReport.Size = new Size(379, 36);
             comboBoxReport.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 22F);
-            label1.Location = new Point(82, 276);
+            label1.Location = new Point(12, 205);
             label1.Name = "label1";
             label1.Size = new Size(105, 41);
             label1.TabIndex = 5;
@@ -101,7 +103,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 20F);
-            button2.Location = new Point(12, 362);
+            button2.Location = new Point(12, 476);
             button2.Name = "button2";
             button2.Size = new Size(254, 51);
             button2.TabIndex = 6;
@@ -109,9 +111,30 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += MakeReport;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 20F);
+            label2.Location = new Point(12, 298);
+            label2.Name = "label2";
+            label2.Size = new Size(372, 37);
+            label2.TabIndex = 8;
+            label2.Text = "Аэропорт конечного пункта:";
+            // 
+            // comboBoxAirports
+            // 
+            comboBoxAirports.Font = new Font("Segoe UI", 15F);
+            comboBoxAirports.FormattingEnabled = true;
+            comboBoxAirports.Location = new Point(12, 338);
+            comboBoxAirports.Name = "comboBoxAirports";
+            comboBoxAirports.Size = new Size(227, 36);
+            comboBoxAirports.TabIndex = 9;
+            // 
             // MainForm
             // 
             ClientSize = new Size(1292, 645);
+            Controls.Add(comboBoxAirports);
+            Controls.Add(label2);
             Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(comboBoxReport);
@@ -136,5 +159,7 @@
         private ComboBox comboBoxReport;
         private Label label1;
         private Button button2;
+        private Label label2;
+        private ComboBox comboBoxAirports;
     }
 }

@@ -46,16 +46,16 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(53, 83);
+            dataGridView1.Location = new Point(12, 82);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(901, 409);
+            dataGridView1.Size = new Size(1037, 314);
             dataGridView1.TabIndex = 1;
             // 
             // ReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1018, 516);
+            ClientSize = new Size(1072, 519);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
             Name = "ReportForm";

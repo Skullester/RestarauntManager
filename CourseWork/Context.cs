@@ -8,7 +8,7 @@ public class Context : DbContext
 {
     public Context()
     {
-        //Database.EnsureDeleted();
+        // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     public DbSet<Airport> Airports { get; set; }
@@ -28,10 +28,26 @@ public class Context : DbContext
         modelBuilder.Entity<Airport>(AirportConfigure);
         modelBuilder.Entity<Airplane>(AirplaneConfigure);
         modelBuilder.Entity<Destination>(DestinationConfigure);
+        modelBuilder.Entity<Position>(PositionConfigure);
         //modelBuilder.Entity<Destination>().HasData(new Destination());
 
         //modelBuilder.Entity<User>().ToTable(t => t.HasCheckConstraint("ValidNumber", "LENGTH(Number) == 11"));
         //modelBuilder.Entity<Order>().Property(x => x.Date).HasDefaultValueSql("datetime('now','localtime')");
+    }
+    private void PositionConfigure(EntityTypeBuilder<Position> builder)
+    {
+        var airplanes = new List<Position>
+        {
+            new Position("Пилот")
+            {id = 1 },
+            new Position("Бортпроводник")
+            {id = 2},
+            new Position("Авиадиспетчер")
+            {id = 3 },
+            new Position ("Борт-инженер")
+            {id = 4 },
+        };
+        builder.HasData(airplanes);
     }
     private void AirplaneConfigure(EntityTypeBuilder<Airplane> builder)
     {
