@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Airport;
 
-public class Position
+public class Service
 {
     [Key]
     public int id { get; set; }
-    public List<Employee> employees { get; set; }
+    [Required]
     public string name { get; set; }
-    public Position(string name)
+    public Service(string name)
     {
         this.name = name;
     }

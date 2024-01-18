@@ -57,12 +57,31 @@ public partial class AddingFlightForm : Form
         });
         var result2 = query2.ToList();
         dataGridViewAirports.DataSource = result2;
+
         var query3 = context.Positions.Select(pos => new
         {
             Должность = pos.name
         });
         var result3 = query3.ToList();
         dataGridViewPositions.DataSource = result3;
+
+        var query4 = context.Personal.Select(e => new
+        {
+            ФИО = e.fullname,
+            ИНН = e.INN,
+            Должность = e.position,
+            Служба = e.Service.name,
+            Аэропорт = e.Airport.name
+        });
+        var result4 = query4.ToList();
+        dataGridViewPersonal.DataSource = result4;
+
+        var query5 = context.Services.Select(e => new
+        {
+            Служба = e.name,
+        });
+        var result5 = query5.ToList();
+        dataGridViewServices.DataSource = result5;
     }
 
     private void Add(object sender, EventArgs e)

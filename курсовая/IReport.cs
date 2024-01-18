@@ -75,16 +75,29 @@ class DestinationReport : IReport
         return "Список маршрутов по конечному пункту";
     }
 }
-class C : IReport
+class TheMostFrequentlyDestinations : IReport
 {
     private Context context;
-    public C(Context context)
+    public TheMostFrequentlyDestinations(Context context)
     {
         this.context = context;
     }
 
     public void Report(ReportForm reportForm)
     {
-
+        var query = context.Airports
+           .OrderByDescending(x => x.Count)
+           .Select(x => new
+           {
+               Назначение = x.name,
+               Количество = x.Count,
+               Адрес = x.address
+           });
+        var result = query.ToList();
+        reportForm.dataGridView1.DataSource = result;
+    }
+    public override string ToString()
+    {
+        return "Самые частые пункты назначения";
     }
 }

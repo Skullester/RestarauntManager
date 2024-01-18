@@ -16,11 +16,10 @@ public class Context : DbContext
     public DbSet<Employee> Personal { get; set; }
     public DbSet<Position> Positions { get; set; }
     public DbSet<Destination> Destinations { get; set; }
-    public DbSet<Crew> Crews { get; set; }
     public DbSet<Service> Services { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(@"Data Source=..\..\..\..\CourseWork\bin\Debug\net8.0-windows\airplane.db");
+        optionsBuilder.UseSqlite(@"Data Source=..\..\..\..\курсовая\bin\Debug\net8.0-windows\airplane.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,11 +28,54 @@ public class Context : DbContext
         modelBuilder.Entity<Airplane>(AirplaneConfigure);
         modelBuilder.Entity<Destination>(DestinationConfigure);
         modelBuilder.Entity<Position>(PositionConfigure);
-        //modelBuilder.Entity<Destination>().HasData(new Destination());
-
-        //modelBuilder.Entity<User>().ToTable(t => t.HasCheckConstraint("ValidNumber", "LENGTH(Number) == 11"));
-        //modelBuilder.Entity<Order>().Property(x => x.Date).HasDefaultValueSql("datetime('now','localtime')");
+        modelBuilder.Entity<Employee>(EmployeeConfigure);
+        modelBuilder.Entity<Service>(ServiceConfigure);
+        modelBuilder.Entity<Employee>().ToTable(t => t.HasCheckConstraint("ValidINN", "LENGTH(INN) == 12"));
     }
+    private void ServiceConfigure(EntityTypeBuilder<Service> builder)
+    {
+        var airplanes = new List<Service>
+        {
+            new Service("Медицинская служба")
+            {id = 1 },
+            new Service("Аэронавигационная")
+            {id = 3 },
+            new Service("Аэродромная")
+            {id = 4 },
+            new Service("Cправочная")
+            {id = 5 },
+            new Service("Осуществление воздушных перевозок")
+            {id = 6 },
+        };
+        builder.HasData(airplanes);
+    }
+
+    private void EmployeeConfigure(EntityTypeBuilder<Employee> builder)
+    {
+        var airplanes = new List<Employee>
+        {
+            new Employee(6,1,1,"Иванов Алексей Викторович","585032751399")
+            {id = 1 },
+            new Employee(5,2,5,"Шубин Игорь Васильевич","105758390771")
+            {id = 2},
+            new Employee(6,1,2,"Измайлова Екатерина Юрьевна","692955486942" )
+            {id = 3 },
+            new Employee (3,3,3,"Тукаев Артем Игоревич","644867207164")
+            {id = 4 },
+            new Employee (1,1,6,"Белых Виктор Евгеньевич","559170343700")
+            {id = 5 },
+            new Employee (6,2,2,"Васницов Александр Александрович","488500292639")
+            {id = 6 },
+            new Employee (6,1,2,"Кузнецов Виктор Сергеевич","501126060983")
+            {id = 7 },
+            new Employee (3,2,3,"Калабаев Павел Николаевич","728421136801")
+            {id = 8 },
+            new Employee (4,1,4,"Князев Алексей Игоревич","585898602516")
+            {id = 9 },
+        };
+        builder.HasData(airplanes);
+    }
+
     private void PositionConfigure(EntityTypeBuilder<Position> builder)
     {
         var airplanes = new List<Position>
@@ -46,6 +88,10 @@ public class Context : DbContext
             {id = 3 },
             new Position ("Борт-инженер")
             {id = 4 },
+            new Position ("Оператор")
+            {id = 5 },
+            new Position ("Медик")
+            {id = 6 },
         };
         builder.HasData(airplanes);
     }
@@ -69,10 +115,11 @@ public class Context : DbContext
     {
         var destinations = new List<Destination>
         {
-            new Destination(2,1,4,9,DateTime.Now + TimeSpan.FromSeconds(60)) {id = 1},
-            new Destination(1,1,4,9,DateTime.Now + TimeSpan.FromHours(4)) {id = 2},
-            new Destination(2,1,4,9,DateTime.Now + TimeSpan.FromHours(6)) {id = 3},
-            new Destination(4,1,4,9,DateTime.Now + TimeSpan.FromHours(8)) {id = 4},
+            new Destination(3,1,4,9,DateTime.Now + TimeSpan.FromSeconds(60)) {id = 1},
+            new Destination(2,1,4,9,DateTime.Now + TimeSpan.FromSeconds(30)) {id = 2},
+            new Destination(1,1,4,9,DateTime.Now + TimeSpan.FromHours(4)) {id = 3},
+            new Destination(2,1,4,9,DateTime.Now + TimeSpan.FromHours(6)) {id = 4},
+            new Destination(4,1,4,9,DateTime.Now + TimeSpan.FromHours(8)) {id = 5},
         };
         builder.HasData(destinations);
     }

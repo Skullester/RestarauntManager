@@ -44,9 +44,15 @@
             comboBoxDate = new ComboBox();
             dataGridViewPositions = new DataGridView();
             label8 = new Label();
+            dataGridViewPersonal = new DataGridView();
+            label9 = new Label();
+            label10 = new Label();
+            dataGridViewServices = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirplanes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirports).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPositions).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPersonal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewServices).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewAirplanes
@@ -54,14 +60,14 @@
             dataGridViewAirplanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAirplanes.Location = new Point(12, 84);
             dataGridViewAirplanes.Name = "dataGridViewAirplanes";
-            dataGridViewAirplanes.Size = new Size(333, 175);
+            dataGridViewAirplanes.Size = new Size(347, 175);
             dataGridViewAirplanes.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(87, 31);
+            label1.Location = new Point(84, 44);
             label1.Name = "label1";
             label1.Size = new Size(141, 37);
             label1.TabIndex = 1;
@@ -71,7 +77,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(591, 31);
+            label2.Location = new Point(591, 44);
             label2.Name = "label2";
             label2.Size = new Size(156, 37);
             label2.TabIndex = 2;
@@ -82,7 +88,7 @@
             dataGridViewAirports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAirports.Location = new Point(402, 84);
             dataGridViewAirports.Name = "dataGridViewAirports";
-            dataGridViewAirports.Size = new Size(522, 346);
+            dataGridViewAirports.Size = new Size(506, 175);
             dataGridViewAirports.TabIndex = 3;
             // 
             // label3
@@ -188,26 +194,66 @@
             // dataGridViewPositions
             // 
             dataGridViewPositions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPositions.Location = new Point(949, 84);
+            dataGridViewPositions.Location = new Point(954, 84);
             dataGridViewPositions.Name = "dataGridViewPositions";
-            dataGridViewPositions.Size = new Size(522, 346);
+            dataGridViewPositions.Size = new Size(248, 175);
             dataGridViewPositions.TabIndex = 14;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 20F);
-            label8.Location = new Point(1111, 31);
+            label8.Location = new Point(995, 44);
             label8.Name = "label8";
             label8.Size = new Size(157, 37);
             label8.TabIndex = 15;
             label8.Text = "Должности";
             // 
+            // dataGridViewPersonal
+            // 
+            dataGridViewPersonal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPersonal.Location = new Point(896, 402);
+            dataGridViewPersonal.Name = "dataGridViewPersonal";
+            dataGridViewPersonal.Size = new Size(663, 270);
+            dataGridViewPersonal.TabIndex = 16;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 20F);
+            label9.Location = new Point(1111, 349);
+            label9.Name = "label9";
+            label9.Size = new Size(166, 37);
+            label9.TabIndex = 17;
+            label9.Text = "Сотрудники";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 20F);
+            label10.Location = new Point(1328, 44);
+            label10.Name = "label10";
+            label10.Size = new Size(116, 37);
+            label10.TabIndex = 18;
+            label10.Text = "Службы";
+            // 
+            // dataGridViewServices
+            // 
+            dataGridViewServices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewServices.Location = new Point(1271, 84);
+            dataGridViewServices.Name = "dataGridViewServices";
+            dataGridViewServices.Size = new Size(288, 175);
+            dataGridViewServices.TabIndex = 19;
+            // 
             // AddingFlightForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1483, 743);
+            ClientSize = new Size(1602, 691);
+            Controls.Add(dataGridViewServices);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(dataGridViewPersonal);
             Controls.Add(label8);
             Controls.Add(dataGridViewPositions);
             Controls.Add(comboBoxDate);
@@ -229,6 +275,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirplanes).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAirports).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPositions).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPersonal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewServices).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,5 +299,9 @@
         private ComboBox comboBoxDate;
         private DataGridView dataGridViewPositions;
         private Label label8;
+        private DataGridView dataGridViewPersonal;
+        private Label label9;
+        private Label label10;
+        private DataGridView dataGridViewServices;
     }
 }

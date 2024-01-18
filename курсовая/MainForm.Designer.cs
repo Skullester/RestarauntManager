@@ -47,7 +47,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(135, 109);
+            pictureBox1.Size = new Size(182, 164);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -65,7 +65,7 @@
             // dataGridViewDestinations
             // 
             dataGridViewDestinations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDestinations.Location = new Point(415, 104);
+            dataGridViewDestinations.Location = new Point(417, 104);
             dataGridViewDestinations.Name = "dataGridViewDestinations";
             dataGridViewDestinations.Size = new Size(814, 480);
             dataGridViewDestinations.TabIndex = 2;
@@ -133,13 +133,13 @@
             // MainForm
             // 
             ClientSize = new Size(1292, 645);
+            Controls.Add(dataGridViewDestinations);
             Controls.Add(comboBoxAirports);
             Controls.Add(label2);
             Controls.Add(button2);
             Controls.Add(label1);
             Controls.Add(comboBoxReport);
             Controls.Add(button1);
-            Controls.Add(dataGridViewDestinations);
             Controls.Add(labelCurrentFlights);
             Controls.Add(pictureBox1);
             Name = "MainForm";

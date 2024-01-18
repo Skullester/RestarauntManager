@@ -36,7 +36,7 @@ public partial class MainForm : Form
         Context = new();
         thread = new(CheckFlight) { Name = "Second" };
         thread.Start();
-        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context, this), new C(Context)]);
+        comboBoxReport.Items.AddRange([new NearestFlightsReport(Context), new DestinationReport(Context, this), new TheMostFrequentlyDestinations(Context)]);
         comboBoxReport.SelectedValueChanged += OnReportChanged;
         var arr = Context.Airports.ToArray();
         comboBoxAirports.Items.AddRange(arr);
@@ -64,12 +64,15 @@ public partial class MainForm : Form
             var destinations = Context.Destinations.ToList();
             foreach (var dest in destinations)
             {
-                if (dest.FlightDate.Minute == DateTime.Now.Minute && dest.FlightDate.Hour == DateTime.Now.Hour && dest.FlightDate.Day == DateTime.Now.Day)
+                if (!dest.IsFlying && dest.FlightDate.Minute == DateTime.Now.Minute && dest.FlightDate.Hour == DateTime.Now.Hour && dest.FlightDate.Day == DateTime.Now.Day)
                 {
+                    var airportEnd = dest.end_airport;
+                    airportEnd.Count++;
                     dest.IsFlying = true;
                     Context.Destinations.Update(dest);
                     dest.airplane.isFree = false;
                     Context.Airplanes.Update(dest.airplane);
+                    Context.Airports.Update(airportEnd);
                     Context.SaveChanges();
                     InitializeTables();
                 }

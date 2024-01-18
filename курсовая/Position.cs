@@ -7,10 +7,15 @@ using System.Threading.Tasks;
 
 namespace Airport;
 
-public class Service
+public class Position
 {
     [Key]
     public int id { get; set; }
-    [Required]
+    public List<Employee> employees { get; set; }
     public string name { get; set; }
+    public Position(string name)
+    {
+        this.name = name;
+    }
+    public override string ToString() => name;
 }
