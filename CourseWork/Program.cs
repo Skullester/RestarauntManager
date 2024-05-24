@@ -13,7 +13,7 @@ internal static class Program
     {
         ApplicationConfiguration.Initialize();
         Application.Run(new ManagerForm());
-        //  CreateStorage();
+        // CreateStorage();
     }
 
     private static void CreateStorage()
